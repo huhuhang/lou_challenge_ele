@@ -30,17 +30,20 @@ def ele_red_packet(number):
 
     s3_list = []
     for url in s2:
+        
         value = {
             "group_sn": url[9:],
             "phone": phone,
             "weixin_uid": '468015ki5tulqs9mbjmjvr6w83o45kh9'
         }
+
         s3 = s.post("https://restapi.ele.me/marketing/hongbao/h5/grab",
                     json=value, headers=headers)
 
         s3_list.append(s3.status_code)
 
+
     if 200 in s3_list:
-        return f"领取成功，{len(s3_list)} 个红包已注入 {phone} 的饿了么账户!"
+        return f"恭喜，挑战完成。{len(s3_list)} 个红包已注入 {phone} 的饿了么账户!"
     else:
-        return "红包领取失败！"
+        return "恭喜，挑战完成！但红包暂时被领完了。😂"
